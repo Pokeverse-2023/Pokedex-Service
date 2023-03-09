@@ -1,0 +1,5 @@
+fastapi[all]
+uvicorn[standard]
+beanie
+autopep8
+pylint
