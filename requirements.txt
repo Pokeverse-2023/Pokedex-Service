@@ -3,3 +3,5 @@ uvicorn[standard]
 beanie
 autopep8
 pylint
+pre-commit
+poetry

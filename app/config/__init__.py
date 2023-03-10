@@ -7,6 +7,3 @@ class Settings(BaseSettings):
   DB_PASSWORD: str
   DB_NAME: str
   DB_SETTINGS: str
-
-  class Config:
-    env_file = ".env"

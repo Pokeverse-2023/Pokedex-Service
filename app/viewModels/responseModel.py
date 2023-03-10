@@ -4,5 +4,5 @@ from pydantic import BaseModel
 
 class Response(BaseModel):
     message: str
-    detail: Optional[dict] = None
+    detail: Optional[list] = None
     success: bool = False
