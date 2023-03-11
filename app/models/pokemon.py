@@ -1,38 +1,20 @@
+"""Pokemon Core Model"""
 from datetime import datetime
-from enum import Enum
-from uuid import UUID
 from beanie import Document
+from app.utils.constants import PokemonType
 
 from app.viewModels.pokemon import CreatePokemonRequest
 
 
-class PokemonType(Enum):
-    DARK = "Dark"
-    PSYCHIC = "Psychic"
-    FIGHTING = "Fighting"
-    STEEL = "Steel"
-    ICE = "Ice"
-    POISON = "Poison"
-    FIRE = "Fire"
-    GROUND = "Ground"
-    FLYING = "Flying"
-    ELECTRIC = "Electric"
-    FAIRY = "Fairy"
-    NORMAL = "Normal"
-    BUG = "Bug"
-    WATER = "Water"
-    ROCK = "Rock"
-    GHOST = "Ghost"
-    DRAGON = "Dragon"
-    GRASS = "Grass"
-
-
 class Pokemon(Document):
+    """
+    Schema Document For Pokemon
+    """
     pokemon_id: int
     name: str
     base_experience: int
     height: int
-    is_default: bool
+    is_default: bool = True
     order: int
     weight: int
     type: PokemonType
@@ -40,6 +22,9 @@ class Pokemon(Document):
 
     @staticmethod
     def from_pydantic(request: CreatePokemonRequest) -> "Pokemon":
+        """
+        Map Request Model From Request
+        """
         return Pokemon(
             pokemon_id=request.id,
             name=request.name,
@@ -52,4 +37,7 @@ class Pokemon(Document):
         )
 
     class Settings:
+        """
+        Configuration Settings For Core Pokemon Schema
+        """
         name = "Pokemon"

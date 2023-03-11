@@ -1,1 +1,2 @@
-from app.models.pokemon import Pokemon, PokemonType
+"""Pokemon Models"""
+from app.models.pokemon import Pokemon

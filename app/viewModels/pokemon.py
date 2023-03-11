@@ -1,21 +1,30 @@
+"""Pokemon View Models"""
 from pydantic import BaseModel
 
-from app.models import PokemonType as Type
+from app.utils.constants import PokemonType
 
 
 class PokemonRequest(BaseModel):
-    name: str
+    """
+    Request Model For Pokemon Core Layer
+    """
     base_experience: int
     height: int
     is_default: bool
     order: int
     weight: int
-    type: Type
+    type: PokemonType
 
 
 class CreatePokemonRequest(PokemonRequest):
+    """
+    Request Model For Creating A New Pokemon
+    """
     id: int
+    name: str
 
 
 class UpdatePokemonRequest(PokemonRequest):
-    pass
+    """
+    Request Model For Updating Existing Pokemon
+    """
