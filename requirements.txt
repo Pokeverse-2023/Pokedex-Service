@@ -5,3 +5,5 @@ autopep8
 pylint
 pre-commit
 poetry
+pytest
+pytest-dotenv

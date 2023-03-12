@@ -12,7 +12,7 @@ core = PokemonCore()
 
 @pokemon_router.get("/", response_model=Response)
 async def get_pokemon(
-        search: Optional[str],
+        search: Optional[str] = "",
         sort_by: PokemonSortField = PokemonSortField.NAME,
         order_by: OrderBy = OrderBy.ASC):
     """
