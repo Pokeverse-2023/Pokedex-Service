@@ -1,5 +1,5 @@
 resource "aws_iam_role" "lambda_exec_role" {
-  name               = "role_for_${var.function_name}"
+  name               = "role-for-${lower(var.function_name)}"
   assume_role_policy = <<EOF
   {
     "Version":"2012-10-17",
@@ -57,7 +57,7 @@ data "aws_iam_policy_document" "lambda_policy_doc" {
 }
 
 resource "aws_iam_policy" "lambda_iam_policy" {
-  name   = "policy_for_${var.function_name}"
+  name   = "policy-for-${lower(var.function_name)}"
   policy = data.aws_iam_policy_document.lambda_policy_doc.json
 }
 

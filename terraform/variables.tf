@@ -38,3 +38,23 @@ variable "source_code_path" {
 variable "output_path" {
   type = string
 }
+
+variable "mongodb_public_key" {
+  type = string
+}
+
+variable "mongodb_private_key" {
+  type = string
+}
+
+variable "mongodb_project_name"{
+  type = string
+}
+
+variable "mongodb_cluster_name" {
+  type = string
+}
+
+variable "mongodb_username"{
+  type = string
+}

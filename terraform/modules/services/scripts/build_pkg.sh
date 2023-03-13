@@ -3,12 +3,12 @@
 echo "Building packages for $function_name"
 
 cd $path_cwd
-dir_name=lambda_dist_pkg/
+dir_name=build_pkg/
 mkdir $dir_name
 
 # Create and activate virtual environment...
-virtualenv -p $runtime env_$function_name
-source env_$function_name/bin/activate
+python3 -m venv env
+source env/bin/activate
 
 # Installing python dependencies...
 FILE=../requirements.txt
@@ -27,11 +27,11 @@ deactivate
 
 # Create deployment package...
 echo "Creating deployment package..."
-cp env_$function_name/lib/$runtime/site-packages/* $dir_name
-cp -r $source_code_path/ $dir_name
+cp -r env/lib/$runtime/site-packages/* $dir_name
+cp -r $source_code_path $dir_name
 
 # Removing virtual environment folder...
 echo "Removing virtual environment folder..."
-rm -rf env_$function_name
+rm -rf env
 
 echo "Finished script execution!"
