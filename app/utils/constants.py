@@ -6,6 +6,7 @@ class PokemonType(Enum):
     """
     Types Of Pokemon
     """
+
     DARK = "Dark"
     PSYCHIC = "Psychic"
     FIGHTING = "Fighting"
@@ -30,6 +31,7 @@ class PokemonSortField(Enum):
     """
     Sort Field Filter For Core Pokemon Model
     """
+
     NAME = "name"
     ORDER = "order"
     BASE_EXPERIENCE = "base_experience"

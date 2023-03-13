@@ -6,5 +6,6 @@ class OrderBy(Enum):
     """
     General Order By Filter Model
     """
+
     ASC = "1"
     DESC = "-1"

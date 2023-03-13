@@ -1,10 +1,12 @@
 """Pokemon Core API"""
 from typing import Optional
+
 from fastapi import APIRouter
+
 from app.core.pokemon import PokemonCore
 from app.utils.common import OrderBy
 from app.utils.constants import PokemonSortField
-from app.viewModels import CreatePokemonRequest, UpdatePokemonRequest, Response
+from app.viewModels import CreatePokemonRequest, Response, UpdatePokemonRequest
 
 pokemon_router = APIRouter()
 core = PokemonCore()
@@ -12,9 +14,10 @@ core = PokemonCore()
 
 @pokemon_router.get("/", response_model=Response)
 async def get_pokemon(
-        search: Optional[str] = "",
-        sort_by: PokemonSortField = PokemonSortField.NAME,
-        order_by: OrderBy = OrderBy.ASC):
+    search: Optional[str] = "",
+    sort_by: PokemonSortField = PokemonSortField.NAME,
+    order_by: OrderBy = OrderBy.ASC,
+):
     """
     Get Pokemon API
     """

@@ -2,6 +2,7 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from mangum import Mangum
+
 from app.api import api_router
 from app.config.database import Connect
 from app.utils.customException import PokeException
@@ -25,11 +26,7 @@ async def exception_handler(_: Request, exc: PokeException):
     """
     return JSONResponse(
         status_code=exc.status_code,
-        content={
-            "message": exc.message,
-            "detail": None,
-            "success": False
-        }
+        content={"message": exc.message, "detail": None, "success": False},
     )
 
 
@@ -37,6 +34,7 @@ async def exception_handler(_: Request, exc: PokeException):
 async def index():
     """Root Of All APIs"""
     return {"message": "Welcome To Pokedex"}
+
 
 app.include_router(api_router, prefix="/api/v1")
 

@@ -1,8 +1,9 @@
 """Pokemon Core Model"""
 from datetime import datetime
-from beanie import Document
-from app.utils.constants import PokemonType
 
+from beanie import Document
+
+from app.utils.constants import PokemonType
 from app.viewModels.pokemon import CreatePokemonRequest
 
 
@@ -10,6 +11,7 @@ class Pokemon(Document):
     """
     Schema Document For Pokemon
     """
+
     pokemon_id: int
     name: str
     base_experience: int
@@ -33,11 +35,12 @@ class Pokemon(Document):
             is_default=request.is_default,
             order=request.order,
             weight=request.weight,
-            type=request.type
+            type=request.type,
         )
 
     class Settings:
         """
         Configuration Settings For Core Pokemon Schema
         """
+
         name = "Pokemon"

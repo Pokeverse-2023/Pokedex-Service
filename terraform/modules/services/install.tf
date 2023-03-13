@@ -4,7 +4,7 @@ resource "null_resource" "install_python_dependencies" {
   }
   provisioner "local-exec" {
     command = "bash ${path.module}/scripts/build_pkg.sh"
-    
+
 
     environment = {
       source_code_path = var.source_code

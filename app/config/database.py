@@ -1,6 +1,7 @@
-from app.config import Settings
 from beanie import init_beanie
 from motor import motor_asyncio
+
+from app.config import Settings
 from app.models import Pokemon
 
 
@@ -11,10 +12,10 @@ class Connect:
     async def start_connection(self):
         DB_NAME = self.settings.DB_NAME
         try:
-          await init_beanie(
-              database=self.get_client()[DB_NAME],
-              document_models=[Pokemon])
-          print("Successful Connection To MongoDB")
+            await init_beanie(
+                database=self.get_client()[DB_NAME], document_models=[Pokemon]
+            )
+            print("Successful Connection To MongoDB")
         except Exception as exc:
             print(exc)
 

@@ -2,6 +2,7 @@ from fastapi.testclient import TestClient
 
 from app.main import app
 
+
 def test_root():
     """
     Test: Welcome
@@ -9,6 +10,7 @@ def test_root():
     with TestClient(app) as client:
         response = client.get("/")
         assert response.status_code == 200
+
 
 def test_get_pokemon():
     """
@@ -40,8 +42,9 @@ def test_add_pokemon_exists():
                 "base_experience": 112,
                 "name": "Pikachu",
                 "order": 35,
-                "weight":60,
-                "height":4,
-                "type":"Electric"}
+                "weight": 60,
+                "height": 4,
+                "type": "Electric",
+            },
         )
         assert response.status_code == 409
