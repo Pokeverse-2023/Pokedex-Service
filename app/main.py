@@ -1,9 +1,11 @@
 """Pokedex Service Core"""
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
+from mangum import Mangum
 from app.api import api_router
 from app.config.database import Connect
 from app.utils.customException import PokeException
+
 app = FastAPI()
 
 
@@ -37,3 +39,5 @@ async def index():
     return {"message": "Welcome To Pokedex"}
 
 app.include_router(api_router, prefix="/api/v1")
+
+handler = Mangum(app)
