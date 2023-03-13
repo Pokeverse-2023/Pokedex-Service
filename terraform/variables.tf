@@ -35,6 +35,6 @@ variable "source_code_path" {
   type = string
 }
 
-variable "output_path"{
+variable "output_path" {
   type = string
 }

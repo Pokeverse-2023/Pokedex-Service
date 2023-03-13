@@ -1,6 +1,10 @@
 resource "null_resource" "install_python_dependencies" {
+  triggers = {
+    always_run = "${timestamp()}"
+  }
   provisioner "local-exec" {
     command = "bash ${path.module}/scripts/build_pkg.sh"
+    
 
     environment = {
       source_code_path = var.source_code
