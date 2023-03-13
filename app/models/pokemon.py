@@ -14,7 +14,7 @@ class Pokemon(Document):
     name: str
     base_experience: int
     height: int
-    is_default: bool = True
+    is_default: bool
     order: int
     weight: int
     type: PokemonType

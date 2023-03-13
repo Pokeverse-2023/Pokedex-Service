@@ -1,4 +1,5 @@
 """Pokemon View Models"""
+from typing import Optional
 from pydantic import BaseModel
 
 from app.utils.constants import PokemonType
@@ -10,7 +11,7 @@ class PokemonRequest(BaseModel):
     """
     base_experience: int
     height: int
-    is_default: bool
+    is_default: Optional[bool] = True
     order: int
     weight: int
     type: PokemonType

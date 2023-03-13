@@ -7,3 +7,5 @@ pre-commit
 poetry
 pytest
 pytest-dotenv
+mangum
+pytest-cov
