@@ -47,7 +47,7 @@ variable "mongodb_private_key" {
   type = string
 }
 
-variable "mongodb_project_name"{
+variable "mongodb_project_name" {
   type = string
 }
 
@@ -55,6 +55,6 @@ variable "mongodb_cluster_name" {
   type = string
 }
 
-variable "mongodb_username"{
+variable "mongodb_username" {
   type = string
 }
