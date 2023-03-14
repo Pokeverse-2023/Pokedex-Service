@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from app.models import Pokemon
 from app.utils.constants import PokemonType
 from app.utils.customException import PokeException
+from app.utils.helper import convert_to_json
 from app.viewModels.pokemon import CreatePokemonRequest, UpdatePokemonRequest
 
 
@@ -21,17 +22,14 @@ class ProjectionModel(BaseModel):
 class PokemonCore:
     """Core Pokemon Layer"""
 
-    async def create_pokemon(self, request: CreatePokemonRequest):
+    async def bulk_insert(self):
         """
         Create A New Pokemon
         """
-        exists = await Pokemon.find_one(
-            {"$or": [{"name": request.id}, {"name": request.name}]}
-        )
-        if exists:
-            raise PokeException(message="Pokemon already exists", status_code=409)
-        new_model = Pokemon.from_pydantic(request)
-        await new_model.create()
+        headers = ["id", "name", "height", "weight", "base_experience", "order"]
+        get_pokemon_json = convert_to_json("pokemon.csv", headers)
+        if get_pokemon_json is not None:
+            Pokemon.insert_many(get_pokemon_json)
 
     async def get_pokemon(self, sort_field, order_by):
         """

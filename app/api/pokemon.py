@@ -29,11 +29,11 @@ async def get_pokemon(
 
 
 @pokemon_router.post("/")
-async def add_pokemon(data: CreatePokemonRequest):
+async def add_pokemons():
     """
     Add Pokemon API
     """
-    await core.create_pokemon(data)
+    await core.bulk_insert()
     return Response(detail=None, message="Pokemon Added Successfully", success=True)
 
 
